@@ -1,0 +1,583 @@
+@charset "UTF-8";
+
+/*--------------------
+Body
+--------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+color: #e24040;
+
+body {
+  height: 100vh;
+  margin: 0;  
+  background: #DEDEDE;
+  color: #5a6674;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.reading-glasses-icon {
+	margin-left: 420px;
+	margin-top: 5px;
+	width: 25px;
+}
+
+/*--------------------
+App
+--------------------*/
+
+.search-view {
+	align-content: center;
+}
+
+.search-form {
+  margin-top: 60px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 50px;
+  border-radius: 40px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  transform: translate(-50%, -50%);
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.submit-button {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	width: 30px;
+}
+  .focus {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  }
+
+.search-input {
+  position: absolute;
+  top: 10px;
+  left: 38px;
+  font-size: 14px;
+  background: none;
+  color: #5a6674;
+  width: 380px;
+  height: 30px;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  outline: none!important;
+  cursor: pointer;
+}
+  
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: #5a6674;
+}
+
+.search-option {
+  position: absolute;
+  text-align: right;
+  top: 10px;
+  right: 15px;
+
+  div {
+    position: relative;
+    display: inline-block;
+    margin: 0 1px;
+    cursor: pointer;
+    
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.01;
+      cursor: pointer;
+    }
+    
+    span {
+      position: absolute;
+      display: block;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      background: #929AA3;
+      color: #fff;
+      font-size: 9px;
+      letter-spacing: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+      padding: 4px 7px;
+      border-radius: 12px;
+      top: -18px;
+      transition: all .2s ease-in-out;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-top: 4px solid #929AA3;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        transition: all .2s ease-in-out;
+      }
+    }
+    
+    &:hover span {
+      opacity: 1;
+      top: -21px;
+    }
+    
+    label {
+      display: block;
+      cursor: pointer;
+    }
+    
+    svg {
+      height: 20px;
+      width: 20px;
+      fill: #5a6674;
+      opacity: 0.6;
+      transition: all .2s ease-in-out;
+      pointer-events: none;
+    }
+    
+    &:hover svg {
+      opacity: 1;
+    }
+    
+    input:checked + label svg {
+      fill: $color;
+      opacity: .9;
+    }
+    
+    input:checked + label span {
+      background: $color;
+      
+      &::after {
+        border-top-color: $color;
+      }
+    }
+  }
+
+
+}
+/* 검색창 추가 */
+
+
+.inputs {
+    margin-left: 100px;
+  }
+
+  .study-content-category {
+    font-size: medium;
+    font-weight: bolder;
+  }
+
+  #input1 {
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgb(117, 109, 170);
+    color: rgb(246, 245, 252);
+    border: 2px solid rgb(117, 109, 170);
+    box-shadow: 2px 2px 0px 0px rgb(77, 72, 72);
+    margin: 10px;
+    margin-bottom: 0px;
+  }
+
+  .input2 {
+    vertical-align: center;
+    line-height: center;
+    font-weight: 600;
+    float: right;
+    width: 130px;
+    height: 40px;
+    border-radius: 4px;
+    background-color: rgb(246, 245, 252);
+    color: rgb(117, 109, 170);
+    border: 2px solid rgb(117, 109, 170);
+    box-shadow: 2px 2px 0px 0px rgb(77, 72, 72);
+    margin: 5px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+  #menu {
+    background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(255, 255, 255);
+background-image: none;
+background-origin: padding-box;
+background-position-x: 0%;
+background-position-y: 0%;
+background-size: auto;
+border-bottom-left-radius: 24px;
+border-bottom-right-radius: 24px;
+border-top-left-radius: 24px;
+border-top-right-radius: 24px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px 0px;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: list-item;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+height: 240px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 10px;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: 10px;
+opacity: 1;
+padding-bottom: 24px;
+padding-left: 24px;
+padding-right: 24px;
+padding-top: 24px;
+position: relative;
+text-align: left;
+transition-delay: 0s;
+transition-duration: 0.2s;
+transition-property: transform;
+transition-timing-function: ease-in;
+width: 244px;
+  }
+
+#menu2 {
+align-items: center;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: flex;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 12px;
+height: 39px;
+justify-content: center;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+text-align: left;
+width: 31.15625px;
+  }
+
+#icon {
+  box-sizing: border-box;
+color: rgb(154, 154, 154);
+cursor: pointer;
+display: block;
+fill: rgb(154, 154, 154);
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 12px;
+height: 14px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+overflow-x: hidden;
+overflow-y: hidden;
+stroke: rgb(154, 154, 154);
+stroke-width: 0px;
+text-align: left;
+width: 14px;
+}
+
+h1 {
+  margin-left: 15px;
+  margin-bottom: 0px;
+}
+
+#h1{
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: -webkit-box;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 16px;
+font-weight: normal;
+height: 40px;
+line-height: 20.239999771118164px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-block-end: 0px;
+margin-block-start: 24px;
+margin-bottom: 0px;
+margin-inline-end: 0px;
+margin-inline-start: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 24px;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+text-align: center;
+width: 307.5px;
+word-break: keep-all;
+  }
+
+.title {
+  font-size: 40px;
+}
+ 
+@media (max-width: 600px) {
+  .title {
+    font-size: 20px;
+  }
+}
+
+.studyTitle
+{
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: -webkit-box;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 16px;
+height: 20px;
+line-height: 20.239999771118164px;
+margin-block-end: 0px;
+margin-block-start: 24px;
+margin-bottom: 0px;
+margin-inline-end: 0px;
+margin-inline-start: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 18px;
+overflow-x: hidden;
+overflow-y: hidden;
+text-align: center;
+word-break: keep-all;
+}
+
+main {
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  height: 5422px;
+  xmargin: 0 auto;
+  text-align: center;
+}
+
+.main_main {
+ display: flex;
+ flex-direction: column;
+ box-sizing: inherit;
+ height: 100%;
+}
+
+.uldesign {
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+height: 100%;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-block-end: 160px;
+margin-block-start: 0px;
+margin-bottom: 160px;
+margin-inline-end: 0px;
+margin-inline-start: 0px;
+margin-left: 0;
+margin-right: 0;
+xmargin: 0 auto;
+margin-top: 0px;
+padding-bottom: 0px;
+padding-inline-start: 0px;
+xpadding-left: 0px;
+xpadding-right: 0px;
+xpadding-top: 0px;
+xwidth: 711px;
+
+}
+
+.lidesign {
+display: inline-block;
+text-align: center;
+background-attachment: scroll;
+background-clip: border-box;
+background-color: rgb(255, 255, 255);
+background-image: none;
+background-origin: padding-box;
+background-position-x: 0%;
+background-position-y: 0%;
+background-size: auto;
+border-bottom-left-radius: 24px;
+border-bottom-right-radius: 24px;
+border-top-left-radius: 24px;
+border-top-right-radius: 24px;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 25px 0px;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: list-item;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+height: 240px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-bottom: 10px;
+margin-left: 10px;
+margin-right: 10px;
+margin-top: 10px;
+opacity: 1;
+padding-bottom: 24px;
+padding-left: 24px;
+padding-right: 24px;
+padding-top: 24px;
+position: relative;
+text-align: left;
+transform: matrix(1.02, 0, 0, 1.02, 0, 0);
+transition-delay: 0s;
+transition-duration: 0.2s;
+transition-property: transform;
+transition-timing-function: ease-in;
+width: 300px;
+}
+
+.study-package {
+text-align: center;
+}
+
+.on_offline_status {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.on_offline {
+cursor: pointer;
+display: block;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+height: 100px;
+margin-top: -15px;
+xlist-style-image: none;
+xlist-style-position: outside;
+xlist-style-type: none;
+}
+
+span {
+  box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: flex;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+height: 82px;
+justify-content: center;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+margin-block-end: 0px;
+xmargin-block-start: 8px;
+margin-bottom: 0px;
+margin-inline-end: 0px;
+margin-inline-start: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 10px;
+padding-bottom: 0px;
+padding-inline-start: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-top: 0px;
+text-align: center;
+xwidth: 250px;
+}
+
+.study-onOff-package {
+  text-align: center;
+}
+
+.on_offline_status {
+cursor: pointer;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 16px;
+position: absolute;
+top: 50%;
+xleft: 50%;
+xmargin-left: -82px;
+xmargin-right: 0px;
+margin-top: 40px;
+text-align: center;
+}
+
+section{
+  bottom: 8px;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: flex;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 12px;
+height: 39px;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+position: absolute;
+right: 16px;
+text-align: left;
+width: 103.625px;
+}
+
+.info_item{
+  align-items: center;
+box-sizing: border-box;
+color: rgb(0, 0, 0);
+cursor: pointer;
+display: flex;
+font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+font-size: 12px;
+height: 39px;
+justify-content: center;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: none;
+text-align: left;
+width: 40.3125px;
+}
+
+.icon {
+  width: 20px;
+}
+
+.icon_count {
+  margin-left: 2px;
+}
+
+.container {
+  height: 100%;
+}
