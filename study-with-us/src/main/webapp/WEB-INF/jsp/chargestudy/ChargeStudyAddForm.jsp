@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true" %>
     
-<%@page import="com.studywithus.domain.Member"%>
+<%@page import="com.swu.studywithus.domain.Member"%>
 <%@ page import="java.sql.Date"%>
 
 <% Member loginUser = (Member) session.getAttribute("loginUser"); %>

@@ -1,10 +1,10 @@
-<%@page import="com.studywithus.domain.Comment"%>
+<%@page import="com.swu.studywithus.domain.Comment"%>
 <%@page import="java.util.List"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
-<%@page import="com.studywithus.dao.CommentDao"%>
-<%@page import="com.studywithus.domain.Community"%>
+<%@page import="com.swu.studywithus.dao.CommentDao"%>
+<%@page import="com.swu.studywithus.domain.Community"%>
 <%@page import="java.util.Collection"%>
-<%@page import="com.studywithus.dao.CommunityDao"%>
+<%@page import="com.swu.studywithus.dao.CommunityDao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
