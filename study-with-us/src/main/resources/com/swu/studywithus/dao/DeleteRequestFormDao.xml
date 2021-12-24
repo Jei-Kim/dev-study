@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studywithus.dao.DeleteRequestFormDao">
+  
+ <resultMap type="DeleteRequestForm" id="DeleteRequestFormMap">
+    <id column="request_no" property="no"/> 
+    <result column="reason" property="reason"/>
+    <result column="remarks" property="remarks"/>
+    <result column="register_date" property="registeredDate"/>
+    
+    <association property="study" javaType="Study">
+    <id column="study_no" property="no"/> 
+    <result column="title" property="title"/>
+    <result column="start_date" property="startDate"/>
+    <result column="end_date" property="endDate"/>
+     <result column="del_status" property="deleteStatus"/>
+    </association>
+    
+    <association property="applicant" javaType="Member">
+      <id column="member_no" property="no"/> 
+      <result column="name" property="name"/>
+    </association>
+  </resultMap>
+  
+  <sql id="select1">
+  select
+      dr.request_no, 
+      dr.reason,
+      dr.remarks,
+      dr.register_date,
+      st.study_no,
+      st.title,
+      st.start_date,
+      st.end_date,
+      st.del_status,
+      m.member_no,
+      m.name
+    from 
+      delete_request dr
+      inner join study st on dr.study_no=st.study_no
+      inner join member m on st.member_no=m.member_no
+  </sql>
+  
+  <select id="findAllForAdmin" resultMap="DeleteRequestFormMap">
+  <include refid="select1"/>
+    where
+      st.del_status=1
+      and
+      dr.remarks is null
+    order by 
+      dr.request_no asc;
+  </select>
+  
+  <select id="findAllForMember" resultMap="DeleteRequestFormMap" parameterType="int">
+  <include refid="select1"/>
+    where
+      st.study_no=#{studyNo}
+    order by 
+      dr.request_no asc;
+  </select>
+
+  <select id="findByNo" resultMap="DeleteRequestFormMap" parameterType="int">
+    <include refid="select1"/>
+    where
+      dr.request_no=#{no}
+  </select>
+            
+  <insert id="insert" parameterType="DeleteRequestForm">
+   insert into 
+     delete_request(study_no,reason)
+    values(#{study.no},#{reason}) 
+  </insert>
+  
+  <update id="updateRemarks" parameterType="DeleteRequestForm">
+    update delete_request set
+      remarks=#{remarks}
+    where
+      request_no=#{no}
+  </update>
+
+  <delete id="delete" parameterType="int">
+    delete from delete_request
+    where study_no=#{no}
+  </delete>
+
+</mapper>

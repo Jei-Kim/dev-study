@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.studywithus.dao.PaymentDao">
+  
+  <resultMap type="Payment" id="PaymentMap">
+      <id column="member_no" property="memberNo"/>
+    <result column="pay_method" property="paymentMethod"/>
+    <result column="status" property="status"/>
+    <result column="register_date" property="paymentDate"/>
+       
+    <association property="study" javaType="Study">
+      <id column="s_study_no" property="no"/>
+      <result column="s_title" property="title"/>
+      <result column="s_category" property="category"/>
+      <result column="s_price" property="price"/>
+    </association>
+  </resultMap>
+  <sql id="select1">
+ select
+      p.pay_method,
+      p.register_date,
+      st.study_no s_studyNo,
+      st.title s_title,
+      st.category s_category,
+      st.price s_price
+    from 
+      payment p
+    inner join study st on p.study_no=st.study_no
+  </sql>
+  
+  <select id="findAll" resultMap="PaymentMap" parameterType="int">
+    <include refid="select1"/>
+    where
+      p.member_no=#{memberNo}
+    order by 
+      p.study_no asc
+  </select>
+            
+  <select id="findByNo" resultMap="PaymentMap">
+   <include refid="select1"/>
+    where 
+      p.member_no=#{memberNo} and p.study_no=#{studyNo} 
+  </select>
+
+  <select id="check" resultType="int">
+   select
+    count(*)
+    from
+    payment
+    where 
+      member_no=#{memberNo} and study_no=#{studyNo} 
+  </select>
+  
+  <insert id="insert" parameterType="Payment">
+   insert into 
+     payment(member_no,study_no,pay_method)
+    values(#{memberNo},#{study.no},#{paymentMethod}) 
+  </insert>
+
+  <update id="update">
+   update payment set
+      status=#{status}     
+    where member_no=#{memberNo} and study_no=#{studyNo}
+  </update>
+
+  <delete id="delete">
+    delete from payment
+    where member_no=#{memberNo} and study_no=#{studyNo}
+  </delete>
+</mapper>

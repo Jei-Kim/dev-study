@@ -12,7 +12,7 @@ public interface CommunityRepository {
 
   void insertLikes (@Param("memberNo") int memberNo, @Param("cmntNo") int communityNo) throws Exception;
 
-  List<Community> findAll(@Param("categoryNo") int categoryNo, @Param("communityStartNo") int communityStartNo) throws Exception;
+  List<Community> findAll(int categoryNo) throws Exception;
 
   List<Community> findByKeyword(@Param("keyword") String keyword,@Param("categoryNo") int categoryNo) throws Exception;
 
