@@ -7,9 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import com.studywithus.domain.Comment;
-import com.studywithus.domain.Member;
 import com.swu.studywithus.domain.Community;
+import com.swu.studywithus.domain.Member;
 import com.swu.studywithus.service.CommunityService;
 
 @Controller
@@ -58,32 +57,32 @@ public class CommunityController {
   @PostMapping("/community/add")
   public ModelAndView add(Community community, HttpSession session) throws Exception {
 
-    communityService.add
-    
     community.setWriter((Member) session.getAttribute("loginUser"));
-
-    communityDao.insert(community);
-    sqlSessionFactory.openSession().commit();
-
+    
+    Community result = communityService.create(community);
+    
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("redirect:list?no=" + community.getCategory() + "&pageNo=1");
+
+    if(result == null) {
+     mv.setViewName("/error");
+
+    } else {
+     mv.setViewName("redirect:list?no=" + community.getCategory());     
+   }
+    
     return mv;
   } 
   
   @GetMapping("/community/detail")
-  public ModelAndView detail(int no) throws Exception {
-    Community community = communityDao.findByNo(no);
-
-    Collection<Comment> commentList = commentDao.findAll(no);
+  public ModelAndView detail(int boardNo) throws Exception {
+    
+    Community community = communityService.findByNo(boardNo);
 
     if (community == null) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
 
-    communityDao.updateCount(no);
-
     ModelAndView mv = new ModelAndView();
-    mv.addObject("comments", commentList);
     mv.addObject("community", community);
     mv.addObject("pageTitle", "스터디위더스 : 커뮤니티상세보기");
     mv.setViewName("community/CommunityDetail");
