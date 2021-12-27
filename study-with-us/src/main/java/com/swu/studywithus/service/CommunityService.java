@@ -46,7 +46,18 @@ public class CommunityService {
     return communityRepository.findByNo(boardNo);
   }
   
+  @Transactional
+  public void update(Community community) throws Exception {
+    communityRepository.update(community);
+  }
+
+  @Transactional
+  public void delete(int boardNo) throws Exception {
+    communityRepository.delete(boardNo);
+  }
+  
   private void updateViewCount(int boardNo) throws Exception {
     communityRepository.updateCount(boardNo);
   }
+  
 }

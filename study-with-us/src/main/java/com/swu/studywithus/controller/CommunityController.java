@@ -90,8 +90,9 @@ public class CommunityController {
   }
 
   @GetMapping("/community/updateform")
-  public ModelAndView updateForm(int no) throws Exception {
-    Community community = communityDao.findByNo(no);
+  public ModelAndView updateForm(int boardNo) throws Exception {
+    
+    Community community = communityService.findByNo(boardNo);
 
     if (community == null) {
       throw new Exception("해당 번호의 스터디가 없습니다.");
@@ -107,13 +108,14 @@ public class CommunityController {
   @PostMapping("/community/update")
   public ModelAndView update(Community community) throws Exception {
 
-    Community oldCommunity = communityDao.findByNo(community.getNo());
+    Community oldCommunity = communityService.findByNo(community.getNo());
+    
+    
     if (oldCommunity == null) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     } 
 
-    communityDao.update(community);
-    sqlSessionFactory.openSession().commit();
+    communityService.update(community);
 
     ModelAndView mv = new ModelAndView();
     mv.setViewName("redirect:detail?no=" + community.getNo());
@@ -123,14 +125,13 @@ public class CommunityController {
   @GetMapping("/community/delete")
   public ModelAndView delete(int no) throws Exception {
 
-    Community community = communityDao.findByNo(no);
+    Community community = communityService.findByNo(no);
 
     if (community == null) {
       throw new Exception("해당 번호의 게시글이 없습니다.");
     }
 
-    communityDao.delete(no);
-    sqlSessionFactory.openSession().commit();
+    communityService.delete(no);
 
     ModelAndView mv = new ModelAndView();
     mv.setViewName("redirect:list?no=" + community.getCategory() + "&pageNo=1");
