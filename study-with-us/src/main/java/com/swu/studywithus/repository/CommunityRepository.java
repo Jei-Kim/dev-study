@@ -1,12 +1,16 @@
 package com.swu.studywithus.repository;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import com.swu.studywithus.domain.Community;
 
 // 역할
 // - 커뮤니티 데이터를 처리하는 객체 사용법을 정의한다.
 //
+@Repository
+@Mapper
 public interface CommunityRepository {
   void insert(Community community) throws Exception;
 
