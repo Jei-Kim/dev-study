@@ -11,7 +11,6 @@
     <package name="com.swu.studywithus.domain."/>
   </typeAliases>
   
-  <typeAlias alias="Community" type="com.swu.studywithus.domain.Community"/>
 
   <environments default="development">
     <environment id="development">
