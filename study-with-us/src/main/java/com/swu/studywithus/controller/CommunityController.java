@@ -137,4 +137,40 @@ public class CommunityController {
     mv.setViewName("redirect:list?no=" + community.getCategory() + "&pageNo=1");
     return mv;
   }
+  
+  @GetMapping("/community/interest/add")
+  public ModelAndView interestAdd(int memberNo, int communityNo, HttpSession session) throws Exception {
+
+    Community oldCommunity= communityService.findByNo(communityNo);
+
+    if (oldCommunity == null) {
+      throw new Exception("해당 번호의 커뮤니티가 없습니다.");
+    } 
+
+    memberNo = ((Member) session.getAttribute("loginUser")).getNo();
+
+    communityService.addLikes(memberNo, communityNo);
+
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("redirect:../detail?no=" + communityNo);
+    return mv;
+  }
+
+  @GetMapping("/community/interest/delete")
+  public ModelAndView interestDelete(int memberNo, int communityNo, HttpSession session) throws Exception {
+
+    Community oldCommunity= communityService.findByNo(communityNo);
+
+    if (oldCommunity == null) {
+      throw new Exception("해당 번호의 커뮤니티가 없습니다.");
+    } 
+
+    memberNo = ((Member) session.getAttribute("loginUser")).getNo();
+
+    communityService.deleteLikes(memberNo, communityNo);
+
+    ModelAndView mv = new ModelAndView();
+    mv.setViewName("redirect:../detail?no=" + communityNo);
+    return mv;
+  }
 }

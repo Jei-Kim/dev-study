@@ -56,8 +56,20 @@ public class CommunityService {
     communityRepository.delete(boardNo);
   }
   
+  @Transactional
+  public void addLikes(int memberNo, int communityNo) throws Exception {
+    communityRepository.insertLikes(memberNo, communityNo);
+  }
+  
+  @Transactional
+  public void deleteLikes(int memberNo, int communityNo) throws Exception {
+    communityRepository.deleteLikes(memberNo, communityNo);
+  }
+  
   private void updateViewCount(int boardNo) throws Exception {
     communityRepository.updateCount(boardNo);
   }
+  
+  
   
 }
