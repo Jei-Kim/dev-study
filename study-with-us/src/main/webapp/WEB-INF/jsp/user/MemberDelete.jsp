@@ -9,16 +9,16 @@
 </head>
 <body>
   <%
-        String id= (String)session.getAttribute("email"); 
-        String pw = request.getParameter("password");
-        
-        
-        MemberDao memberDao = MemberDao.findByNo();
-        int check = memberDao.delete();
-        
-        if(check == 1){
-            session.invalidate(); 
-    %>
+  String id= (String)session.getAttribute("email"); 
+          String pw = request.getParameter("password");
+          
+          
+          MemberDao memberDao = MemberDao.findByNo();
+          int check = memberDao.delete();
+          
+          if(check == 1){
+              session.invalidate();
+  %>
         <br><br>
         <b><font size="4" color="gray">회원정보가 삭제되었습니다.</font></b>
         <br><br><br>

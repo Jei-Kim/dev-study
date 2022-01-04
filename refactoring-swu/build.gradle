@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+	id 'eclipse' // 별도 추가
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// jsp 내 jstl용 추가
+	implementation 'javax.servlet:jstl'
+  	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+// 별도 추가 - 이클립스 내 프로젝트 이름 설정
+eclipse {
+    project {
+        name = "refactoring-swu"
+    }
+}
