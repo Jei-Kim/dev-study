@@ -105,4 +105,28 @@ public class CommunityServiceTest {
     
     Assertions.assertThat(cmnt.size()).isEqualTo(2);
   }
+  
+  @Test
+  @Transactional
+  void interestAdd() throws Exception {
+    member = memberdao.findByNo(8);
+    Community cmnt = repo.findByNo(9);
+    
+    repo.insertLikes(member.getNo(), cmnt.getNo());
+    
+    Community result = repo.findByNo(9);
+    Assertions.assertThat(result.getLike()).isEqualTo(1);
+  }
+  
+  @Test
+  @Transactional
+  void interestDelete() throws Exception {
+    member = memberdao.findByNo(8);
+    Community cmnt = repo.findByNo(9);
+    
+    repo.deleteLikes(member.getNo(), cmnt.getNo());
+    
+    Community result = repo.findByNo(9);
+    Assertions.assertThat(result.getLike()).isEqualTo(0);
+  }
 }
