@@ -232,22 +232,29 @@ text-align: center;
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="500">
       <div class="container">
         <!--<a href="#" class="navbar-brand">스터디<span class="text-primary">위더스</span></a>-->
-        <a href="/swu/app/index"><img src="${contextPath}/img/swu_text.png" alt="LOGO"></a>
+        <a href="/"><img src="${contextPath}/img/swu_text.png" alt="LOGO"></a>
 
         <div class="navbar-collapse collapse" id="navbarContent">
           <ul class="navbar-nav ml-auto">
           
             <li class="nav-item active">
-              <c:if test="${loginUser eq null}">
+         <!--     <c:if test="${loginUser eq null}"> -->
+               <c:if test="${empty loginUser}">
               <a id="open1" class="nav-link" href="#">Sign Up / In</a>
+           	</c:if>
+            <!--   </c:if>--> 
+              
+             <!--   <c:if test="${loginUser ne null}"> 잠깐 주석처리 -->
+             <c:if test="${!empty loginUser}">
+              <a class="nav-link" href="member/logout">Logout</a>
               </c:if>
-              <c:if test="${loginUser ne null}">
-              <a class="nav-link" href="user/logout">Logout</a>
-              </c:if>
+              <!--</c:if>-->
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="freestudy/list">Study</a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="chargestudy/list">Mentoring</a>
               </li>
@@ -635,7 +642,7 @@ text-align: center;
       <!-- 추가 -->
       <div class="modal-body mx-4">
 
-        <form action='user/login' method="post">
+        <form action='member/login' method="post">
         <div class="md-form">
        <label data-error="wrong" data-success="right"> 이메일 
    

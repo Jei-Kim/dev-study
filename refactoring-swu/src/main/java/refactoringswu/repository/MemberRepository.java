@@ -12,7 +12,7 @@ import refactoringswu.domain.Member;
 @Repository//("MemberMapper")
 public interface MemberRepository {
 	
-  List<Member> findAll() throws Exception;
+  public List<Member> findAll() throws Exception;
   Member findByNo(int no) throws Exception;
   Member findByEmail(String email) throws Exception; // 회원가입 시 아이디 중복검사
   
@@ -22,7 +22,7 @@ public interface MemberRepository {
 
   int emailCheck(String email) throws Exception; 
 
-  void insert(Member member) throws Exception;
+  public void insert(Member member) throws Exception;
   void update(Member member) throws Exception;
   void updatePassword(Member member) throws Exception;
   void delete(int no) throws Exception;
