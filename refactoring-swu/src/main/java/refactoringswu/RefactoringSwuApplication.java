@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "mapper") //-> 테스트 해보기 
+@MapperScan(basePackages = "refactoringswu.repository") //-> 테스트 해보기 
 public class RefactoringSwuApplication {
 
 	public static void main(String[] args) {

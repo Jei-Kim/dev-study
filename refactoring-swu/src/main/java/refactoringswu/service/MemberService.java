@@ -17,7 +17,7 @@ import org.apache.ibatis.annotations.Param; //보류
 @RequiredArgsConstructor
 public class MemberService {
 	
-	//@Autowired //repository(mapper)에 빈 주입 -> 컨트롤러 내 Service의 @Autowired와 충돌 -> 빈 못 찾음 
+	@Autowired //repository(mapper)에 빈 주입
 	MemberRepository memberRepository;
 
 	/* new로 생성 시 테스트에서 또 다른 객체를 이용하게 되는 문제점 발생	
@@ -31,7 +31,7 @@ public class MemberService {
 //	  this.memberRepository = memberRepository;
 //  } 
   */
-	
+	 public
   List<Member> findAll() throws Exception {
 	  return memberRepository.findAll();
   }
@@ -66,7 +66,7 @@ public class MemberService {
   }; 
 
   @Transactional
-  public void insert(Member member) throws Exception{
+public  void insert(Member member) throws Exception{
 	  memberRepository.insert(member);
   };
   
