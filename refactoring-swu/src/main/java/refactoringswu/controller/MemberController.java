@@ -21,42 +21,30 @@ import refactoringswu.service.MemberService;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
+
 	@Autowired
 	private final MemberService memberService;
+
+	@Autowired
+	SqlSessionFactory sqlSessionFactory;
+
+	@PostMapping("/join")
+	public String join(@ModelAttribute Member member, BindingResult result) throws Exception {
+
+		if (result.hasErrors()) {
+			return "Error";
+		}
+		memberService.insert(member);
+		sqlSessionFactory.openSession().commit();
+		log.info(member.getEmail() + "회원가입 성공"); //확인용 
+		return "redirect:../";
+	}
+
+	/* 매퍼파일 연결됐는지 확인용 
+	@GetMapping("/members")
+	public List<Member> findAll() throws Exception {
+		log.info("allmember = {}", memberService.findAll());
+		return memberService.findAll();
+	} */
 	
-	 @Autowired
-	 SqlSessionFactory sqlSessionFactory;
-
-    
-	/*
-    @PostMapping("/join")
-    public String join(@ModelAttribute Member member, BindingResult result) throws Exception {
-        if (result.hasErrors()) {
-            return "Error";
 }
-        memberService.insert(member);
-        return "redirect:/";
-    }
-*/
-
-    @PostMapping("/join")
-    public String join(@ModelAttribute Member member, BindingResult result) throws Exception {
-    	
-    	if (result.hasErrors()) {
-            return "Error";
-}
-      memberService.insert(member);
-      sqlSessionFactory.openSession().commit();
-
-      return "redirect:/";
-    }
-    
-    /* 매퍼파일 연결됐는지 확인용 */
-    @GetMapping("/members")
-    public List<Member> findAll() throws Exception {
-    	log.info("allmember = {}", memberService.findAll());
-        return memberService.findAll();
-    }
-}
-

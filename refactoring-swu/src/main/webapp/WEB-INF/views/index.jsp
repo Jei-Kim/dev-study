@@ -638,11 +638,8 @@ text-align: center;
         <form action='user/login' method="post">
         <div class="md-form">
        <label data-error="wrong" data-success="right"> 이메일 
-   <!--  얘를 빼보자 <input type="email" id = "email" name='email' class="form-control validate" autocomplete="username" required oninput = "checkEmail()" />
-         -->
+   
         <input type="email" id = "email" name='email' class="form-control validate" autocomplete="" /></label> 
-<!--         <span class="email_ok">사용 가능한 이메일입니다.</span>
-        <span class="email_already">이미 사용중인 이메일입니다.</span> -->
           
         </div>
 
@@ -792,10 +789,11 @@ overlay2.addEventListener('click', closeModal2);
                      $('.email_already').css("display","inline-block");
                      $('.email_ok').css("display", "none");
                  }
-             },
-             error:function(){
-                 alert("이메일을 다시 입력하세요.");
              }
+            /*,
+             	error:function(){
+                 alert("이메일을 다시 입력하세요.");
+             }*/
          });
          };
      </script>
