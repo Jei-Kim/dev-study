@@ -2,12 +2,9 @@ package refactoringswu.domain;
 
 import java.sql.Date;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-//@Data
-@Getter
-@Setter
+@Data
 public class Member {
   public static final int GENERAL_MEMBER = 0;
   public static final int MENTOR = 1;

@@ -23,9 +23,9 @@
 
   <link rel="stylesheet" href="${contextPath}/css/maicons.css">
 
-  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="${contextPath}/css/bootstrap.css">
 
-  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="${contextPath}/css/animate.css">
 
   <link rel="stylesheet" href="${contextPath}/css/theme.css">
 
@@ -392,25 +392,12 @@ text-align: center;
                 <td class="git-n">Seonyoung Ha</td><br>
               </tr>
             </table>
-
-            <!--
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;김제이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              김주창&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              하선영-->
-<!--
-          <div class ="git-img">
-          <div class="git-j"><a href="https://github.com/Jei-Kim"><img src="${contextPath}/img/github.png"></img></a></div>
-          <div class="git-jc"><a href="https://github.com/kimjoochang"><img src="${contextPath}/img/github.png"></img></a></div>
-          <div class="git-sy"><a href="https://github.com/seonyoungHa"><img src="${contextPath}/img/github.png"></img></a></div><br>
-        </div>-->
-         <!-- 김제이&nbsp;&nbsp;&nbsp;김주창&nbsp;&nbsp;&nbsp;하선영-->
-          <!--<a href="about.html" class="btn btn-primary mt-3">Read more</a>-->
         </div>
 
 
         <div class="col-lg-6 py-3 wow fadeInRight">
           <div class="img-fluid py-3 text-center">
-            <img class="img_sub" src="${contextPath}/img/gummy-macbook.png" alt="">
+            <img class="img_sub" src="${contextPath}/img/gummy-macbook.png" alt="macbook img">
           </div>
         </div>
       </div>
@@ -575,7 +562,7 @@ text-align: center;
 
         <div class="modal-body mx-3">
 
-          <form action="user/join" method="post"><!-- 추가-->
+          <form action="member/join" method="post"><!-- 추가-->
             
             <div class="md-form mb-5">
             <label class ="sign_label" data-error="wrong" data-success="right">&nbsp;이름
