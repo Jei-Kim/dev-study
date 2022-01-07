@@ -302,7 +302,7 @@
 			<div class="study-bottom-button">
 					<a class="input6" href='list'>목록</a><br>			
 					 <c:if test="${freeStudy.writer.no eq loginUser.no}">
-      <a class="input6" href='updateform?no=${freeStudy.no}'>수정</a> 
+      <a class="input6" href='${freeStudy.no}/update'>수정</a> 
         <c:if test="${freeStudy.deleteStatus eq 0}">
           <a class="input6" id ="open" href='delete?no=${freeStudy.no}'>삭제</a> 
         </c:if>	

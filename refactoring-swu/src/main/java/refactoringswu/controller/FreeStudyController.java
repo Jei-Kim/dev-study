@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.RequiredArgsConstructor;
@@ -77,10 +77,6 @@ public class FreeStudyController {
 			Member participant = null;
 
 			Study freeStudy = studyService.findByNo(no);
-
-			if (freeStudy == null) {
-				throw new Exception("해당 번호의 스터디가 없습니다.");
-			}
 			
 			/* 진행상태 코드 - 시작 */
 			
@@ -122,6 +118,48 @@ public class FreeStudyController {
 	        return "freestudy/FreeStudyDetail";
 		}
 
+	 @GetMapping("/{no}/update")
+	 public String updateForm(@PathVariable int no, Model model) throws Exception {
+		 Study freeStudy = studyService.findByNo(no);
+		 model.addAttribute("freeStudy",freeStudy);
+		 return "freestudy/FreeStudyUpdateForm";
+	 }
+	 
+	 @PostMapping("/{no}/update")
+		public String update(@PathVariable int no, @ModelAttribute Study freeStudy) throws Exception {
+		 	freeStudy = studyService.findByNo(no);
+			studyService.update(freeStudy);
+			sqlSessionFactory.openSession().commit();
+			return "redirect:/freestudy/{no}";
+		}
+
+		
+	 // 삭제 전 확인 필요할듯 
+	 @GetMapping("/delete")
+		public String delete(int no) throws Exception {
+
+			Study freeStudy = studyService.findByNo(no);
+			
+			if (freeStudy == null) {
+				throw new Exception("해당 번호의 스터디가 없습니다.");
+			}
+
+			studyService.delete(no);
+			sqlSessionFactory.openSession().commit();
+
+			return "redirect:list";
+		}
+	 
+	 @GetMapping("/search") // 검색화면 출력 오류 
+		public String search(String keyword, Model model, HttpSession request) throws Exception {
+
+			Collection<Study> freeStudyList = studyService.findByKeyword(keyword);
+			
+			model.addAttribute("freeStudyList",freeStudyList);
+			//request.setAttribute()
+		    return "freestudy/FreeStudyList";
+		}
+	 
 	 /*
 	@GetMapping("/freestudy/form")
 	public ModelAndView form() {

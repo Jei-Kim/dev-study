@@ -19,7 +19,7 @@
       
 <header class="freepagetop">
  
-  <form action='update?no=${freeStudy.no}' method='post'>
+  <form action='/freestudy/${freeStudy.no}/update' method='post'>
     
     <fieldset class="menu">
       

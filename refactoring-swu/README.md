@@ -15,7 +15,7 @@
 
 ## BindingResult result 오류 -> modelattribute랑 와야하는ㅡㄷㅅ?
 
-# study domain @Data 컴파일 오류
+## study domain @Data 컴파일 오류
 
 Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 
@@ -29,6 +29,17 @@ Generating equals/hashCode implementation but without a call to superclass, even
     - callSuper = false: 본인클래스 필드 값만 고려
 
  
+
+## search 오류
+
+- 콘솔에는 정상 출력되나,웹에서 view 호출 시 값이 안 담김 
+
+    - -> collection type이라 model.addAllattributes로 값을 담아줬는데 model.addAttribute로 수정하니까 해결됨
+
+    - -> 변수명 동일한데 왜 메서드마다 addAllattributes로 담은 값은 jsp로 전달이 안 되는지 알아보기 
+
+- pathvariable 사용한 url로 수정하고 확인해보기 
+
 
 # 공부
 

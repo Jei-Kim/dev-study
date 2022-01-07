@@ -79,7 +79,7 @@ trimDirectiveWhitespaces="true" %>
   <input id="input1" type="button" value="진행중">
   <input id="input1" type="button" value="진행완료">
   
-  <a class=input2 href='form'>스터디 작성</a>
+  <a class=input2 href='add'>스터디 작성</a>
   </div>
   <br>
 

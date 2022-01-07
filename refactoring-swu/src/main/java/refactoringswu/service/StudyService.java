@@ -51,7 +51,7 @@ public class StudyService {
 		studyRepository.insert(study);
 	};
 
-	void update(Study study) throws Exception {
+	public void update(Study study) throws Exception {
 		studyRepository.update(study);
 	};
 
