@@ -1,8 +1,8 @@
 package refactoringswu.service;
 
-import java.util.Collection;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param; //보류 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,8 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import refactoringswu.domain.Member;
 import refactoringswu.repository.MemberRepository;
-
-import org.apache.ibatis.annotations.Param; //보류 
 
 @Service
 @RequiredArgsConstructor

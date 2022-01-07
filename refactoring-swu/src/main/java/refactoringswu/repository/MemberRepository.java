@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import refactoringswu.domain.Member;
 
 @Mapper
-@Repository//("MemberMapper")
+@Repository//("MemberRepository")
 public interface MemberRepository {
 	
   public List<Member> findAll() throws Exception;
