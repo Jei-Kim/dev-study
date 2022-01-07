@@ -125,15 +125,18 @@ public class FreeStudyController {
 		 return "freestudy/FreeStudyUpdateForm";
 	 }
 	 
+	 // area cannot be null 문제 해결해야 됨, view도 수정해야함 
 	 @PostMapping("/{no}/update")
-		public String update(@PathVariable int no, @ModelAttribute Study freeStudy) throws Exception {
-		 	freeStudy = studyService.findByNo(no);
+		public String update(@PathVariable int no, Study freeStudy) throws Exception {
+
+		 	no = freeStudy.getNo();
+		 	studyService.findByNo(no);
 			studyService.update(freeStudy);
 			sqlSessionFactory.openSession().commit();
+
 			return "redirect:/freestudy/{no}";
 		}
 
-		
 	 // 삭제 전 확인 필요할듯 
 	 @GetMapping("/delete")
 		public String delete(int no) throws Exception {
