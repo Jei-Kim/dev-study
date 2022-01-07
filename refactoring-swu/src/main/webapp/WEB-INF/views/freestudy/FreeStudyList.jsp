@@ -120,7 +120,7 @@ trimDirectiveWhitespaces="true" %>
    </c:when>
    </c:choose>
   
-        <li class="lidesign"> <a href='detail?no=${freeStudy.no}'></a>
+        <li class="lidesign"> <a href='/freestudy/${freeStudy.no}'></a>
           <h1 class="studyTitle"> ${freeStudy.title} </h1>
           
           <span>
