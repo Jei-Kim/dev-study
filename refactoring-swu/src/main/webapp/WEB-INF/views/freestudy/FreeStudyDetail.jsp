@@ -1,9 +1,10 @@
-<%@page import="com.studywithus.domain.Study"%>
-<%@page import="com.studywithus.dao.StudyDao"%>
+<%@page import="refactoringswu.domain.Study"%>
+<%@page import="refactoringswu.repository.StudyRepository"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>

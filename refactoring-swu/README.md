@@ -34,14 +34,18 @@ Generating equals/hashCode implementation but without a call to superclass, even
 
 ## 
 
+# 할일
+
+- 애노테이션 정리
+- pageTitle 설정 알아보기
+- 헤더, 풋터 링크 정리 
+
 
 
 # ?
 
 - service 메서드 public ?
-- 애노테이션 정리
 - mypage ?
-- pageTitle 설정 알아보기
 
 
 

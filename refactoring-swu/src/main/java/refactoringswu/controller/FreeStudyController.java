@@ -1,5 +1,6 @@
 package refactoringswu.controller;
 
+import java.sql.Date;
 import java.util.Collection;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,6 +66,60 @@ public class FreeStudyController {
 			Collection<Study> freeStudyList = studyService.findAll(0, 0);
 			model.addAttribute("freeStudyList", freeStudyList);
 	        return "freestudy/FreeStudyList";
+		}
+	 
+	 @GetMapping("/{no}")
+		public String detail(@PathVariable int no, HttpSession session, Model model) throws Exception { //long 
+
+			int result; // 관심목록 추가 여부 확인용 임시 변수
+			int participateResult;
+			
+			Member participant = null;
+
+			Study freeStudy = studyService.findByNo(no);
+
+			if (freeStudy == null) {
+				throw new Exception("해당 번호의 스터디가 없습니다.");
+			}
+			
+			/* 진행상태 코드 - 시작 */
+			
+			if (new Date(System.currentTimeMillis()).compareTo(freeStudy.getStartDate()) == -1) {
+				freeStudy.setStudyStatus(0); // 모집중
+
+			} else if (new Date(System.currentTimeMillis()).compareTo(freeStudy.getEndDate()) == -1) {
+				freeStudy.setStudyStatus(1); // 진행중
+
+			} else {
+				freeStudy.setStudyStatus(2); // 진행완료
+			}
+
+			/*  - 끝  */
+
+			
+			studyService.updateCount(no); // 조회수 코드
+
+			/*  관심목록(좋아요) 추가 유무 확인용 코드  */
+			Member freeMember = (Member) session.getAttribute("loginUser");
+			// sessionConst 바꿔보기 
+
+			if (freeMember != null) {
+				result = studyService.checkLikesByMember(freeMember.getNo(), no);
+				participant = studyMemberService.findByNoMember(freeMember.getNo(), no, Study.APPLICANT_STATUS);
+			} else {
+				result = 0;
+			}
+
+			if (participant == null) {
+				participateResult = 0;
+
+			} else {
+				participateResult = 1;
+			}
+			/* - 끝 */
+
+			model.addAttribute("freeStudy", freeStudy);
+	        return "freestudy/FreeStudyDetail";
 		}
 
 	 /*

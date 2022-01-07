@@ -15,46 +15,46 @@ import refactoringswu.repository.StudyMemberRepository;
 @Service
 @RequiredArgsConstructor
 public class StudyMemberService {
-	
-	@Autowired 
+
+	@Autowired
 	StudyMemberRepository studyMemberRepository;
-	
-		List<Study> findAllStudy(@Param("memberNo") int memberNo, @Param("myStatus") int statusNo, @Param("low") int low,
-				@Param("high") int high) throws Exception {
-			return studyMemberRepository.findAllStudy(memberNo, statusNo, low, high);
-		}
 
-		Study findByNoStudy(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo, @Param("myStatus") int statusNo)
-				throws Exception {
-			return studyMemberRepository.findByNoStudy(memberNo, studyNo, statusNo);
-		}
+	public List<Study> findAllStudy(@Param("memberNo") int memberNo, @Param("myStatus") int statusNo,
+			@Param("low") int low, @Param("high") int high) throws Exception {
+		return studyMemberRepository.findAllStudy(memberNo, statusNo, low, high);
+	}
 
-		List<Member> findAllMember(@Param("studyNo") int studyNo, @Param("myStatus") int statusNo) throws Exception {
-			return studyMemberRepository.findAllMember(studyNo, statusNo);
-		}
+	public Study findByNoStudy(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo,
+			@Param("myStatus") int statusNo) throws Exception {
+		return studyMemberRepository.findByNoStudy(memberNo, studyNo, statusNo);
+	}
 
-		Member findByNoMember(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo,
-				@Param("myStatus") int statusNo) throws Exception {
-			return studyMemberRepository.findByNoMember(memberNo, studyNo, statusNo);
-		}
+	public List<Member> findAllMember(@Param("studyNo") int studyNo, @Param("myStatus") int statusNo) throws Exception {
+		return studyMemberRepository.findAllMember(studyNo, statusNo);
+	}
 
-		Map<String, Object> findByNoStatus(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo) throws Exception {
-			return studyMemberRepository.findByNoStatus(memberNo, studyNo);
-		}
+	public Member findByNoMember(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo,
+			@Param("myStatus") int statusNo) throws Exception {
+		return studyMemberRepository.findByNoMember(memberNo, studyNo, statusNo);
+	}
 
-		public void insert(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo, @Param("myStatus") int statusNo)
-				throws Exception {
-			studyMemberRepository.insert(memberNo, studyNo, statusNo);
-		}
+	public Map<String, Object> findByNoStatus(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo)
+			throws Exception {
+		return studyMemberRepository.findByNoStatus(memberNo, studyNo);
+	}
 
-		void update(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo, @Param("myStatus") int statusNo)
-				throws Exception {
-			studyMemberRepository.update(memberNo, studyNo, statusNo);
-		}
+	public void insert(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo, @Param("myStatus") int statusNo)
+			throws Exception {
+		studyMemberRepository.insert(memberNo, studyNo, statusNo);
+	}
 
-		void delete(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo) throws Exception {
-			studyMemberRepository.delete(memberNo, studyNo);
-		}
-	
+	public void update(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo, @Param("myStatus") int statusNo)
+			throws Exception {
+		studyMemberRepository.update(memberNo, studyNo, statusNo);
+	}
+
+	public void delete(@Param("memberNo") int memberNo, @Param("studyNo") int studyNo) throws Exception {
+		studyMemberRepository.delete(memberNo, studyNo);
+	}
 
 }
