@@ -330,7 +330,7 @@ text-align: center;
               <h5 class="text-secondary">일반기업</h5>
               <p>General Company <br>
                 <br>기업 공채 정보부터 면접까지 스터디 참여로 준비해보세요!</p>
-              <a href="freestudy/findByCategory?keyword=일반기업" class="btn btn-primary">Read more</a>
+              <a href="freestudy/category?keyword=일반기업" class="btn btn-primary">Read more</a>
             </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ text-align: center;
               <h5 class="text-secondary">공기업/공무원</h5>
               <p>Public Enterprise/Public Official <br>
                 <br>공기업, 공무원 단기 합격을 위한 파이널 스터디에 참여해보세요!</p>
-              <a href="freestudy/findByCategory?keyword=공기업" class="btn btn-primary">Read more</a>
+              <a href="freestudy/category?keyword=공기업" class="btn btn-primary">Read more</a>
             </div>
           </div>
         </div>
@@ -359,7 +359,7 @@ text-align: center;
               <h5 class="text-secondary">프로그래밍</h5>
               <p>Programming <br>
                 <br>프로그래밍 입문 기초부터 실전 심화까지 원하는 스터디를 참여해보세요!</p>
-              <a href="freestudy/findByCategory?keyword=프로그래밍" class="btn btn-primary">Read more</a>
+              <a href="freestudy/category?keyword=프로그래밍" class="btn btn-primary">Read more</a>
             </div>
           </div>
         </div>

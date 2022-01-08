@@ -130,6 +130,7 @@ public class FreeStudyController {
 		public String update(@PathVariable int no, Study freeStudy) throws Exception {
 
 		 	no = freeStudy.getNo();
+		 	
 		 	studyService.findByNo(no);
 			studyService.update(freeStudy);
 			sqlSessionFactory.openSession().commit();
@@ -163,6 +164,14 @@ public class FreeStudyController {
 		    return "freestudy/FreeStudyList";
 		}
 	 
+	 @GetMapping("/category")
+		public String findByCategory(String keyword, Model model) throws Exception {
+
+			Collection<Study> freeStudyList = studyService.findAllByKeyword(0, 0, keyword);
+			model.addAttribute("freeStudyList", freeStudyList);
+			return "freestudy/FreeStudyList";
+		}
+	
 	 /*
 	@GetMapping("/freestudy/form")
 	public ModelAndView form() {

@@ -20,7 +20,7 @@ trimDirectiveWhitespaces="true" %>
   <div class="container">
   <jsp:include page="../header.jsp"></jsp:include>
 
-<!-- 검색창 -->
+	<!-- 검색창 -->
       <div class="search-view">
       <form class="search-form" action="search">
         <input type="search" name="keyword" placeholder="키워드를 검색해주세요." class="search-input">
